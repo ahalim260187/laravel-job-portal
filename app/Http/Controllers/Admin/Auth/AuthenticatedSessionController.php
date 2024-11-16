@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -17,7 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('admin.auth.login');
     }
 
     /**
@@ -25,13 +25,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        dd('trying to access admin dashboard');
+        $request->authenticate('admin');
 
         $request->session()->regenerate();
         if ($request->user()->role === 'company') {
-            return redirect()->intended(RouteServiceProvider::COMPANY_DASHBOARD);
+            return redirect()->intended(
+                RouteServiceProvider::COMPANY_DASHBOARD
+            );
         } elseif ($request->user()->role === 'candidate') {
-            return redirect()->intended(RouteServiceProvider::CANDIDATE_DASHBOARD);
+            return redirect()->intended(
+                RouteServiceProvider::CANDIDATE_DASHBOARD
+            );
         }
     }
 
