@@ -25,19 +25,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        dd('trying to access admin dashboard');
         $request->authenticate('admin');
 
         $request->session()->regenerate();
-        if ($request->user()->role === 'company') {
-            return redirect()->intended(
-                RouteServiceProvider::COMPANY_DASHBOARD
-            );
-        } elseif ($request->user()->role === 'candidate') {
-            return redirect()->intended(
-                RouteServiceProvider::CANDIDATE_DASHBOARD
-            );
-        }
+
+        return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
     }
 
     /**
@@ -45,7 +37,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 

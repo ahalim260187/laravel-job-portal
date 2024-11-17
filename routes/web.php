@@ -22,25 +22,44 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name(
+        'profile.edit'
+    );
+    Route::patch('/profile', [ProfileController::class, 'update'])->name(
+        'profile.update'
+    );
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name(
+        'profile.destroy'
+    );
 });
 
 require __DIR__ . '/auth.php';
 
 // route Group for candidate
-Route::group(['middleware' => ['auth', 'verified', 'user.role:candidate'], 'prefix' => 'candidate', 'as' => 'candidate.'], function () {
-    Route::get('/dashboard', function () {
-        return view('frontend.candidate-dashboard.dashboard');
-    })->name('dashboard');
-});
+Route::group(
+    [
+        'middleware' => ['auth:web', 'verified', 'user.role:candidate'],
+        'prefix' => 'candidate',
+        'as' => 'candidate.',
+    ],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('frontend.candidate-dashboard.dashboard');
+        })->name('dashboard');
+    }
+);
 
 // route Group for company
-Route::group(['middleware' => ['auth', 'verified', 'user.role:company'], 'prefix' => 'company', 'as' => 'company.'], function () {
-    Route::get('/dashboard', function () {
-        return view('frontend.company-dashboard.dashboard');
-    })->name('dashboard');
-});
+Route::group(
+    [
+        'middleware' => ['auth:web', 'verified', 'user.role:company'],
+        'prefix' => 'company',
+        'as' => 'company.',
+    ],
+    function () {
+        Route::get('/dashboard', function () {
+            return view('frontend.company-dashboard.dashboard');
+        })->name('dashboard');
+    }
+);
