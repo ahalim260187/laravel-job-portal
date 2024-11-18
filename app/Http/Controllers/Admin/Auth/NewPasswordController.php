@@ -38,7 +38,7 @@ class NewPasswordController extends Controller
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
-        $status = Password::reset(
+        $status = Password::broker('admins')->reset(
             $request->only(
                 'email',
                 'password',
@@ -62,7 +62,7 @@ class NewPasswordController extends Controller
         // redirect them back to where they came from with their error message.
         return $status == Password::PASSWORD_RESET
             ? redirect()
-                ->route('login')
+                ->route('admin.login')
                 ->with('status', __($status))
             : back()
                 ->withInput($request->only('email'))
