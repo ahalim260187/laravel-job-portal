@@ -20,8 +20,9 @@
 
 <body>
     @include('frontend.layout.header')
-
-    @yield('content')
+    <main class="main">
+        @yield('content')
+    </main>
 
     <section class="section-box subscription_box">
         <div class="container">
