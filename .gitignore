@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /resources/views/admin-template
+/resources/views/frontend-template
 /storage/*.key
 /vendor
 .env
