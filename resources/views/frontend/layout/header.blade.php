@@ -41,7 +41,7 @@
             <div class="header-right">
                 <div class="block-signin">
                     <!-- <a class="text-link-bd-btom hover-up" href="page-register.html">Register</a> -->
-                    <a class="btn btn-default btn-shadow ml-40 hover-up" href="page-signin.html">Sign in</a>
+                    <a class="btn btn-default btn-shadow ml-40 hover-up" href="{{ route('login') }}">Sign in</a>
                 </div>
             </div>
         </div>

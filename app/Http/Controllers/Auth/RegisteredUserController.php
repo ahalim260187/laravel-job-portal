@@ -30,6 +30,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => [
@@ -40,6 +41,7 @@ class RegisteredUserController extends Controller
                 'max:255',
                 'unique:' . User::class,
             ],
+            'account_type' => ['required', 'in:candidate,company'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -47,18 +49,20 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->account_type
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        // if ($request->user()->role === 'company') {
-        //     return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
-        // } elseif ($request->user()->role === 'candidate') {
-        //     return redirect(RouteServiceProvider::CANDIDATE_DASHBOARD);
-        // }
+        if (auth()->user()->role === 'company') {
+            return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
+        } elseif (auth()->user()->role === 'candidate') {
+            return redirect(RouteServiceProvider::CANDIDATE_DASHBOARD);
+        }
 
-        return redirect(RouteServiceProvider::CANDIDATE_DASHBOARD);
+        // return redirect(RouteServiceProvider::CANDIDATE_DASHBOARD);
+        return redirect('/');
     }
 }
