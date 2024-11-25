@@ -40,8 +40,18 @@
             </div>
             <div class="header-right">
                 <div class="block-signin">
-                    <!-- <a class="text-link-bd-btom hover-up" href="page-register.html">Register</a> -->
-                    <a class="btn btn-default btn-shadow ml-40 hover-up" href="{{ route('login') }}">Sign in</a>
+                    @guest
+                        <a class="btn btn-default btn-shadow ml-40 hover-up" href="{{ route('login') }}">Sign in</a>
+                    @endguest
+                    @auth
+                        @if (auth()->user()->role === 'candidate')
+                            <a class="btn btn-default btn-shadow ml-40 hover-up"
+                                href="{{ route('candidate.dashboard') }}">Dashboard</a>
+                        @elseif (auth()->user()->role === 'company')
+                            <a class="btn btn-default btn-shadow ml-40 hover-up"
+                                href="{{ route('company.dashboard') }}">Dashboard</a>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>
