@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class CompanyDashboardController extends Controller
+class CompanyProfileController extends Controller
 {
     public function index(): View
     {
-        return view('frontend.company-dashboard.dashboard');
+        return view('frontend.company-dashboard.profile');
     }
 }
