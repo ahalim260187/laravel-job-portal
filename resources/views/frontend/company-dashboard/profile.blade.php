@@ -83,27 +83,27 @@
                                     aria-labelledby="pills-profile-tab">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">Industry Type *</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-control form-icons select-active">
                                                     <option value="">Select</option>
                                                     <option value="1">One</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">Organization Type *</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-control form-icons select-active">
                                                     <option value="">Select</option>
                                                     <option value="1">One</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">Team Size *</label>
-                                                <select class="form-select" aria-label="Default select example">
+                                                <select class="form-control form-icons select-active">
                                                     <option value="">Select</option>
                                                     <option value="1">One</option>
                                                 </select>
@@ -138,21 +138,30 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">Country</label>
-                                                <input class="form-control" type="text">
+                                                <select class="form-control form-icons select-active">
+                                                    <option value="">Select</option>
+                                                    <option value="1">One</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">State</label>
-                                                <input class="form-control" type="text">
+                                                <select class="form-select form-icons select-active">
+                                                    <option value="">Select</option>
+                                                    <option value="1">One</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group select-style">
                                                 <label class="font-sm color-text-mutted mb-10">City</label>
-                                                <input class="form-control" type="text">
+                                                <select class="form-control form-icons select-active">
+                                                    <option value="">Select</option>
+                                                    <option value="1">One</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
