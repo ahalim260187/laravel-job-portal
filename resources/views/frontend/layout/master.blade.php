@@ -16,6 +16,10 @@
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
     <title>joblist - Job Portal HTML Template </title>
 </head>
 
@@ -64,6 +68,12 @@
     <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#datepicker').datepicker();
+        });
+    </script>
 </body>
 
 </html>
