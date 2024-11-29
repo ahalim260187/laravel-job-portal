@@ -72,5 +72,7 @@ Route::group(
             CompanyProfileController::class,
             'index',
         ])->name('profile');
+
+        Route::post('/profile/company-info', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
     }
 );

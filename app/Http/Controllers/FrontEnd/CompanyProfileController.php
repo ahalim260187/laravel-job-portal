@@ -10,6 +10,10 @@ class CompanyProfileController extends Controller
 {
     public function index(): View
     {
-        return view('frontend.company-dashboard.profile');
+        return view('frontend.company-dashboard.profile.index');
+    }
+    public function updateCompanyInfo(Request $request)
+    {
+        dd($request->all());
     }
 }
