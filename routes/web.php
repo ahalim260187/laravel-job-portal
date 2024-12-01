@@ -61,8 +61,6 @@ Route::group(
         'as' => 'company.',
     ],
     function () {
-        Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
-
         Route::get('/dashboard', [
             CompanyDashboardController::class,
             'index',
@@ -73,6 +71,9 @@ Route::group(
             'index',
         ])->name('profile');
 
-        Route::post('/profile/company-info', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
+        Route::post('/profile/company-info', [
+            CompanyProfileController::class,
+            'updateCompanyInfo',
+        ])->name('profile.company-info');
     }
 );
