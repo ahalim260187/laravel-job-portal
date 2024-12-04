@@ -52,6 +52,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <x-image-preview :source="$companyInfo->logo" :height="250"
+                                                        :width="250" />
                                                     <label class="font-sm color-text-mutted mb-10">Logo *</label>
                                                     <input
                                                         class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
@@ -61,6 +63,8 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <x-image-preview :source="$companyInfo->banner" :height="250"
+                                                        :width="500" />
                                                     <label class="font-sm color-text-mutted mb-10">Banner *</label>
                                                     <input
                                                         class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}"
@@ -73,22 +77,22 @@
                                             <div class="form-group">
                                                 <label class="font-sm color-text-mutted mb-10">Company Name *</label>
                                                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                                    type="text" name="name" value="{{ old('name') }}">
+                                                    type="text" name="name"
+                                                    value="{{ old('name', $companyInfo?->name) }}">
                                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
-                                                <textarea class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" style="height:150px" name="bio"
-                                                    value="{{ old('bio') }}">{{ old('bio') }}</textarea>
+                                                <textarea class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" style="height:150px" name="bio">{{ old('bio', $companyInfo?->bio) }}</textarea>
                                                 <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
-                                                <textarea class="form-control {{ $errors->has('vision') ? 'is-invalid' : '' }}" style="height:150px" name="vision">{{ old('vision') }}</textarea> <x-input-error :messages="$errors->get('vision')"
+                                                <textarea class="form-control {{ $errors->has('vision') ? 'is-invalid' : '' }}" style="height:150px" name="vision">{{ old('vision', $companyInfo?->vision) }}</textarea> <x-input-error :messages="$errors->get('vision')"
                                                     class="mt-2" />
                                             </div>
                                         </div>

@@ -14,11 +14,11 @@ class CompanyProfileController extends Controller
     use FileUploudTrait;
     public function index(): View
     {
-        return view('frontend.company-dashboard.profile.index');
+        $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+        return view('frontend.company-dashboard.profile.index', compact('companyInfo'));
     }
     public function updateCompanyInfo(ProfileUpdateRequest $request)
     {
-        // dd($request->all());
         $logoPath = $this->uploudFile($request, 'logo');
         $bannerPath = $this->uploudFile($request, 'banner');
         $data = [];
