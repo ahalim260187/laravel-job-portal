@@ -75,5 +75,20 @@ Route::group(
             CompanyProfileController::class,
             'updateCompanyInfo',
         ])->name('profile.company-info');
+
+        Route::post('/profile/founding-info', [
+            CompanyProfileController::class,
+            'updateFoundingInfo',
+        ])->name('profile.founding-info');
+
+        Route::post('/profile/account-info', [
+            CompanyProfileController::class,
+            'updateAccountInfo',
+        ])->name('profile.account-info');
+
+        Route::post('/profile/password-info', [
+            CompanyProfileController::class,
+            'updatePasswordInfo',
+        ])->name('profile.password-info');
     }
 );
