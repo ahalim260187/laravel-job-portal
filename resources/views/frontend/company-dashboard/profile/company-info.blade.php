@@ -5,7 +5,7 @@
          <div class="row">
              <div class="col-md-6">
                  <div class="form-group">
-                     <x-image-preview :source="$companyInfo?->logo" :height="250" :width="250" />
+                     <x-image-preview :source="$companyInfo?->logo" :height="250" :width="250" imgName="Logo" />
                      <label class="font-sm color-text-mutted mb-10">Logo *</label>
                      <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" type="file"
                          name="logo">
@@ -14,7 +14,7 @@
              </div>
              <div class="col-md-6">
                  <div class="form-group">
-                     <x-image-preview :source="$companyInfo?->banner" :height="250" :width="500" />
+                     <x-image-preview :source="$companyInfo?->banner" :height="250" :width="500" imgName="Banner" />
                      <label class="font-sm color-text-mutted mb-10">Banner *</label>
                      <input class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}" type="file"
                          name="banner">
