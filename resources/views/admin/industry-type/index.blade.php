@@ -31,15 +31,22 @@
                                     <th>Slug</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr>
-                                    <td>Create a mobile app</td>
-                                    <td>
-                                        create-a-mobile-app
-                                    </td>
-                                    <td>
-                                        <div class="badge badge-success">Completed</div>
-                                    </td>
-                                </tr>
+                                @forelse ($industriTypes as $industryType)
+                                    <tr>
+                                        <td>{{ $industryType->name }}</td>
+                                        <td>{{ $industryType->slug }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                            <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="alert alert-warning">No Data</div>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </table>
                         </div>
                     </div>
@@ -47,21 +54,9 @@
             </div>
             <div class="card-footer text-right">
                 <nav class="d-inline-block">
-                    <ul class="pagination mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1 <span
-                                    class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                        </li>
-                    </ul>
+                    @if ($industriTypes->hasPages())
+                        {{ $industriTypes->links() }}
+                    @endif
                 </nav>
             </div>
         </div>

@@ -16,7 +16,8 @@ class IndustriTypeController extends Controller
      */
     public function index(): View
     {
-        return view('admin.industry-type.index');
+        $industriTypes = IndustriType::paginate(5);
+        return view('admin.industry-type.index', compact('industriTypes'));
     }
 
     /**
@@ -24,7 +25,7 @@ class IndustriTypeController extends Controller
      */
     public function create(): View
     {
-        return view('admin.industry-type.create');
+        return view('admin.industry-type.create',);
     }
 
     /**
