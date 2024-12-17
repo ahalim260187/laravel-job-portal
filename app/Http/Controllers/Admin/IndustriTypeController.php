@@ -57,7 +57,8 @@ class IndustriTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $industriTypes = IndustriType::findOrFail($id);
+        return view('admin.industry-type.edit', compact('industriTypes'));
     }
 
     /**
@@ -65,7 +66,14 @@ class IndustriTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255', 'unique:industri_types,name, ' . $id]
+        ]);
+        $type = IndustriType::findOrFail($id);
+        $type->name = $request->name;
+        $type->save();
+        Notify::updateNotify();
+        return to_route('admin.industry-type.index');
     }
 
     /**
