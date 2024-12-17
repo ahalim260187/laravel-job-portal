@@ -13,6 +13,11 @@
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}">
+    <!-- Tambahkan SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
@@ -50,6 +55,7 @@
     <script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-notify::notify />
     @notifyJs
 
@@ -61,6 +67,43 @@
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.delete-btn').on('click', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let url = $(this).attr('href');
+                        $.ajax({
+                            url: url,
+                            method: 'DELETE',
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                // console.log(response)
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr)
+                                swal(xhr.responseJSON.message, {
+                                    icon: "error"
+                                });
+                            }
+                        });
+                    }
+                });
+            })
+        });
+    </script>
 </body>
 
 </html>

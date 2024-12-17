@@ -38,7 +38,8 @@
                                         <td>
                                             <a href="{{ route('admin.industry-type.edit', $industryType->id) }}"
                                                 class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a href="{{ route('admin.industry-type.destroy', $industryType->id) }}"
+                                                class="btn btn-sm btn-danger delete-btn"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @empty

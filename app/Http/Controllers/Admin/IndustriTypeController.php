@@ -8,6 +8,7 @@ use App\Services\Notify;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Mockery\Matcher\Not;
 
 class IndustriTypeController extends Controller
 {
@@ -25,7 +26,7 @@ class IndustriTypeController extends Controller
      */
     public function create(): View
     {
-        return view('admin.industry-type.create',);
+        return view('admin.industry-type.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class IndustriTypeController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industri_types,name']
+            'name' => ['required', 'max:255', 'unique:industri_types,name'],
         ]);
 
         $type = new IndustriType();
@@ -67,7 +68,11 @@ class IndustriTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industri_types,name, ' . $id]
+            'name' => [
+                'required',
+                'max:255',
+                'unique:industri_types,name, ' . $id,
+            ],
         ]);
         $type = IndustriType::findOrFail($id);
         $type->name = $request->name;
@@ -81,6 +86,8 @@ class IndustriTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        IndustriType::findOrFail($id)->delete();
+        Notify::deleteNotify();
+        return response(['message' => 'Success'], 200);
     }
 }

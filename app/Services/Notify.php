@@ -13,4 +13,9 @@ class Notify
     {
         return notify()->success('Update Data successfully');
     }
+
+    public static function deleteNotify()
+    {
+        return notify()->success('Delete Data successfully');
+    }
 }
