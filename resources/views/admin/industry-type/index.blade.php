@@ -20,7 +20,8 @@
                                 </div>
                             </form>
                         </div>
-                        <a href="" class="btn btn-sm btn-primary"><i class="fas fa-plus-circle"></i> Create New</a>
+                        <a href="{{ route('admin.industry-type.create') }}" class="btn btn-sm btn-primary"><i
+                                class="fas fa-plus-circle"></i> Create New</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">

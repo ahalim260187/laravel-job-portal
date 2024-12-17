@@ -7,6 +7,7 @@
     <title>General Dashboard &mdash; Stisla</title>
 
     <!-- General CSS Files -->
+    @notifyCss
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
 
@@ -49,6 +50,8 @@
     <script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
+    <x-notify::notify />
+    @notifyJs
 
     <!-- JS Libraies -->
     <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>

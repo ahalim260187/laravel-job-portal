@@ -70,6 +70,7 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
     @notifyJs
     <script type="text/javascript">
         $(function() {

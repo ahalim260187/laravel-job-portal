@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\IndustriType;
+use App\Services\Notify;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -19,17 +22,25 @@ class IndustriTypeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admin.industry-type.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255', 'unique:industri_types,name']
+        ]);
+
+        $type = new IndustriType();
+        $type->name = $request->name;
+        $type->save();
+        Notify::createNotify();
+        return to_route('admin.industry-type.index');
     }
 
     /**
