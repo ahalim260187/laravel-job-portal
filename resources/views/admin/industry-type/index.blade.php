@@ -10,11 +10,12 @@
                     <div class="card-header ">
                         <h4>All Industry Types</h4>
                         <div class="card-header-form">
-                            <form>
+                            <form action="{{ route('admin.industry-type.index') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" placeholder="Search" name="search"
+                                        value="{{ old('search') }}">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-primary" style="height: 40px"><i
+                                        <button type="submit" class="btn btn-primary" style="height: 40px"><i
                                                 class="fas fa-search"></i></button>
                                     </div>
                                 </div>
@@ -57,7 +58,7 @@
             <div class="card-footer text-right">
                 <nav class="d-inline-block">
                     @if ($industriTypes->hasPages())
-                        {{ $industriTypes->links() }}
+                        {{ $industriTypes->withQueryString()->links() }}
                     @endif
                 </nav>
             </div>
