@@ -115,6 +115,52 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustriType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class IndustriType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ */
+	class OrganizationType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string $avatar
  * @property string $email
  * @property string $role

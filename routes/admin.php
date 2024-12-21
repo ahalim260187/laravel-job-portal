@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustriTypeController;
+use App\Http\Controllers\Admin\OrganizationTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
@@ -48,7 +49,9 @@ Route::group(
     ['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'],
     function () {
         // admin dashboard
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name(
+            'dashboard'
+        );
 
         Route::get(
             'verify-email',
@@ -85,6 +88,13 @@ Route::group(
             'destroy',
         ])->name('logout');
 
+        // Industri Type Route
         Route::resource('/industry-type', IndustriTypeController::class);
+
+        // Organization Type Route
+        Route::resource(
+            '/organization-type',
+            OrganizationTypeController::class
+        );
     }
 );
