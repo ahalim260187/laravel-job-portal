@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustriTypeController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\StateController;
 use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 
@@ -101,5 +102,8 @@ Route::group(
 
         // Country Route
         Route::resource('/countries', CountryController::class);
+
+        // State Route
+        Route::resource('/states', StateController::class);
     }
 );
