@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustriTypeController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\StateController;
 use App\Models\Country;
@@ -105,5 +107,13 @@ Route::group(
 
         // State Route
         Route::resource('/states', StateController::class);
+
+        // City Route
+        Route::resource('/cities', CityController::class);
+
+        Route::get('get-states/{countryId}', [
+            LocationController::class,
+            'getStatesOfCountry',
+        ])->name('get.states');
     }
 );

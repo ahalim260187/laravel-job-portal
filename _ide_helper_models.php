@@ -49,6 +49,31 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name
+ * @property int $state_id
+ * @property int $country_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Country|null $country
+ * @property-read \App\Models\State $state
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereCountryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereStateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereUpdatedAt($value)
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $user_id
  * @property string|null $name
  * @property string|null $slug
