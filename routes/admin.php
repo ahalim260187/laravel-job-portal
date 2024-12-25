@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustriTypeController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
@@ -96,5 +98,8 @@ Route::group(
             '/organization-type',
             OrganizationTypeController::class
         );
+
+        // Country Route
+        Route::resource('/countries', CountryController::class);
     }
 );
