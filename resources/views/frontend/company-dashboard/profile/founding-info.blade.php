@@ -11,27 +11,25 @@
                          class="form-control form-icons select-active {{ $errors->has('industry_type') ? 'is-invalid' : '' }}"
                          name="industry_type">
                          <option value="">Select</option>
-                         <option value="0"
-                             {{ old('industry_type', $companyInfo?->industry_type_id) == '0' ? 'selected' : '' }}>One
-                         </option>
-                         <option value="1"
-                             {{ old('industry_type', $companyInfo?->industry_type_id) == '1' ? 'selected' : '' }}>two
-                         </option>
+                         @foreach ($industryTypes as $industryType)
+                             <option value="{{ $industryType->id }}">{{ $industryType->name }}</option>
+                         @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
                  </div>
              </div>
              <div class="col-md-4">
                  <div class="form-group select-style">
-                     <label class="font-sm color-text-mutted mb-10">Organization Size
+                     <label class="font-sm color-text-mutted mb-10">Organization Type
                          *</label>
                      <select
                          class="form-control form-icons select-active {{ $errors->has('organization_size') ? 'is-invalid' : '' }}"
                          name="organization_size">
                          <option value="">Select</option>
-                         <option value="0"
-                             {{ old('organization_size', $companyInfo?->organization_size_id) == '0' ? 'selected' : '' }}>
-                             One</option>
+                         @foreach ($organizationTypes as $organizationType)
+                             <option value="{{ $organizationType->id }}">{{ $organizationType->name }}</option>
+                         @endforeach
+                         <option value="0">One</option>
                      </select>
                      <x-input-error :messages="$errors->get('organization_size')" class="mt-2" />
                  </div>
@@ -43,8 +41,10 @@
                          class="form-control form-icons select-active  {{ $errors->has('team_size') ? 'is-invalid' : '' }}"
                          name="team_size">
                          <option value="">Select</option>
-                         <option value="1"
-                             {{ old('team_size', $companyInfo?->team_size_id) == '1' ? 'selected' : '' }}> >One</option>
+                         @foreach ($teamSizes as $teamSize)
+                             <option value="{{ $teamSize->id }}">{{ $teamSize->name }}
+                                 {{ $teamSize->name === 'Only Me' ? '' : ' Member' }}</option>
+                         @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
                  </div>

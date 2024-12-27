@@ -7,6 +7,9 @@ use App\Http\Requests\FrontEnd\AccountInfoUpdateRequest;
 use App\Http\Requests\FrontEnd\FoundingInfoUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Company;
+use App\Models\IndustriType;
+use App\Models\OrganizationType;
+use App\Models\TeamSize;
 use App\Traits\FileUploudTrait;
 use Auth;
 use Illuminate\Http\RedirectResponse;
@@ -20,9 +23,17 @@ class CompanyProfileController extends Controller
     public function index(): View
     {
         $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+        $industryTypes = IndustriType::all();
+        $organizationTypes = OrganizationType::all();
+        $teamSizes = TeamSize::all();
         return view(
             'frontend.company-dashboard.profile.index',
-            compact('companyInfo')
+            compact(
+                'companyInfo',
+                'industryTypes',
+                'organizationTypes',
+                'teamSizes'
+            )
         );
     }
     public function updateCompanyInfo(
