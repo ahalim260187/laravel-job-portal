@@ -100,11 +100,12 @@
                  <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Country</label>
                      <select
-                         class="form-control form-icons select-active {{ $errors->has('country') ? 'is-invalid' : '' }}"
+                         class="form-control form-icons select-active {{ $errors->has('country') ? 'is-invalid' : '' }} country"
                          name="country">
                          <option value="">Select</option>
-                         <option value="0" {{ old('country', $companyInfo?->country) == '0' ? 'selected' : '' }}>
-                             One</option>
+                         @foreach ($countries as $country)
+                             <option value="{{ $country->id }}">{{ $country->name }}</option>
+                         @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('country')" class="mt-2" />
                  </div>
@@ -113,7 +114,7 @@
                  <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">State</label>
                      <select
-                         class="form-select form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }}"
+                         class="form-select form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }} state"
                          name="state">
                          <option value="">Select</option>
                          <option value="0" {{ old('state', $companyInfo?->state) == '0' ? 'selected' : '' }}>One
@@ -126,7 +127,7 @@
                  <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">City</label>
                      <select
-                         class="form-control form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }}"
+                         class="form-control form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }} city"
                          name="city">
                          <option value="">Select</option>
                          <option value="0" {{ old('city', $companyInfo?->city) == '0' ? 'selected' : '' }}>One

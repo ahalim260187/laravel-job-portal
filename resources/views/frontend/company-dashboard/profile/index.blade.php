@@ -55,3 +55,53 @@
     </section>
     <div class="mt-120"></div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.country').change(function() {
+                let country_id = $(this).val();
+                $('.city').html("")
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-states', ':id') }}".replace(':id', country_id),
+                    data: {},
+                    success: function(response) {
+                        let html = '';
+                        response.forEach(function(state) {
+                            html +=
+                                `<option value="${state.id}">${state.name}</option>`;
+                        });
+                        $('.state').html(html);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.state').change(function() {
+                let state_id = $(this).val();
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-cities', ':id') }}".replace(':id', state_id),
+                    data: {},
+                    success: function(response) {
+                        let html = '';
+                        response.forEach(function(city) {
+                            html +=
+                                `<option value="${city.id}">${city.name}</option>`;
+                        });
+                        $('.city').html(html);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

@@ -7,6 +7,7 @@ use App\Http\Requests\FrontEnd\AccountInfoUpdateRequest;
 use App\Http\Requests\FrontEnd\FoundingInfoUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Company;
+use App\Models\Country;
 use App\Models\IndustriType;
 use App\Models\OrganizationType;
 use App\Models\TeamSize;
@@ -26,13 +27,15 @@ class CompanyProfileController extends Controller
         $industryTypes = IndustriType::all();
         $organizationTypes = OrganizationType::all();
         $teamSizes = TeamSize::all();
+        $countries = Country::all();
         return view(
             'frontend.company-dashboard.profile.index',
             compact(
                 'companyInfo',
                 'industryTypes',
                 'organizationTypes',
-                'teamSizes'
+                'teamSizes',
+                'countries'
             )
         );
     }

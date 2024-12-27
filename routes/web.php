@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontEnd\LocationController;
 use App\Http\Controllers\FrontEnd\CandidateDashboardController;
 use App\Http\Controllers\FrontEnd\CompanyDashboardController;
 use App\Http\Controllers\FrontEnd\CompanyProfileController;
@@ -20,9 +21,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+// Route for fetching states of a country
+Route::get('/get-states/{countryId}', [
+    LocationController::class,
+    'getStatesOfCountry',
+])->name('get-states');
+
+// Route for Fetching Cities of a State
+Route::get('/get-cities/{stateId}', [
+    LocationController::class,
+    'getCitiesOfState',
+])->name('get-cities');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name(
