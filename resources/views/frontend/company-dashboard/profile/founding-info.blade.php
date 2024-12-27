@@ -12,7 +12,8 @@
                          name="industry_type">
                          <option value="">Select</option>
                          @foreach ($industryTypes as $industryType)
-                             <option value="{{ $industryType->id }}">{{ $industryType->name }}</option>
+                             <option @selected($industryType->id === $companyInfo->industry_type_id) value="{{ $industryType->id }}">
+                                 {{ $industryType->name }}</option>
                          @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
@@ -27,7 +28,8 @@
                          name="organization_size">
                          <option value="">Select</option>
                          @foreach ($organizationTypes as $organizationType)
-                             <option value="{{ $organizationType->id }}">{{ $organizationType->name }}</option>
+                             <option @selected($organizationType->id === $companyInfo->organization_size_id) value="{{ $organizationType->id }}">
+                                 {{ $organizationType->name }}</option>
                          @endforeach
                          <option value="0">One</option>
                      </select>
@@ -42,7 +44,7 @@
                          name="team_size">
                          <option value="">Select</option>
                          @foreach ($teamSizes as $teamSize)
-                             <option value="{{ $teamSize->id }}">{{ $teamSize->name }}
+                             <option @selected($teamSize->id === $companyInfo->team_size_id) value="{{ $teamSize->id }}">{{ $teamSize->name }}
                                  {{ $teamSize->name === 'Only Me' ? '' : ' Member' }}</option>
                          @endforeach
                      </select>
@@ -104,7 +106,8 @@
                          name="country">
                          <option value="">Select</option>
                          @foreach ($countries as $country)
-                             <option value="{{ $country->id }}">{{ $country->name }}</option>
+                             <option @selected($country->id === $companyInfo->country) value="{{ $country->id }}">{{ $country->name }}
+                             </option>
                          @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('country')" class="mt-2" />
@@ -117,8 +120,10 @@
                          class="form-select form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }} state"
                          name="state">
                          <option value="">Select</option>
-                         <option value="0" {{ old('state', $companyInfo?->state) == '0' ? 'selected' : '' }}>One
-                         </option>
+                         @foreach ($states as $state)
+                             <option @selected($state->id === $companyInfo->state) value="{{ $state->id }}">{{ $state->name }}
+                             </option>
+                         @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('state')" class="mt-2" />
                  </div>
@@ -130,8 +135,10 @@
                          class="form-control form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }} city"
                          name="city">
                          <option value="">Select</option>
-                         <option value="0" {{ old('city', $companyInfo?->city) == '0' ? 'selected' : '' }}>One
-                         </option>
+                         @foreach ($cities as $city)
+                             <option @selected($city->id === $companyInfo->city) value="{{ $city->id }}">{{ $city->name }}
+                             </option>
+                         @endforeach
                      </select>
                      <x-input-error :messages="$errors->get('city')" class="mt-2" />
                  </div>

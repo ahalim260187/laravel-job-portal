@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FrontEnd\AccountInfoUpdateRequest;
 use App\Http\Requests\FrontEnd\FoundingInfoUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\City;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\IndustriType;
 use App\Models\OrganizationType;
+use App\Models\State;
 use App\Models\TeamSize;
 use App\Traits\FileUploudTrait;
 use Auth;
@@ -28,6 +30,12 @@ class CompanyProfileController extends Controller
         $organizationTypes = OrganizationType::all();
         $teamSizes = TeamSize::all();
         $countries = Country::all();
+        $states = State::select('id', 'name', 'country_id')
+            ->where('country_id', $companyInfo->country)
+            ->get();
+        $cities = City::select('id', 'name', 'state_id', 'country_id')
+            ->where('state_id', $companyInfo->state)
+            ->get();
         return view(
             'frontend.company-dashboard.profile.index',
             compact(
@@ -35,7 +43,9 @@ class CompanyProfileController extends Controller
                 'industryTypes',
                 'organizationTypes',
                 'teamSizes',
-                'countries'
+                'countries',
+                'states',
+                'cities'
             )
         );
     }
