@@ -1,6 +1,9 @@
 <?php
 
 // Check input error
+
+use App\Models\Company;
+
 if (!function_exists('hasError')) {
     function hasError($errors, string $name): ?string
     {
@@ -27,5 +30,35 @@ if (!function_exists('setSidebarActive')) {
             }
         }
         return '';
+    }
+}
+
+// Check Company Profile Completion
+if (!function_exists('isCompanyProfileComplete')) {
+    function isCompanyProfileComplete(): bool
+    {
+        $requiredFields = [
+            'logo',
+            'banner',
+            'bio',
+            'vision',
+            'name',
+            'industry_type_id',
+            'organization_size_id',
+            'team_size_id',
+            'establishment_date',
+            'phone',
+            'email',
+            'country',
+        ];
+
+        $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+
+        foreach ($requiredFields as $field) {
+            if (empty($companyInfo->$field)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

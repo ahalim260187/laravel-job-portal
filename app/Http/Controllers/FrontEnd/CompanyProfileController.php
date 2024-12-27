@@ -31,10 +31,10 @@ class CompanyProfileController extends Controller
         $teamSizes = TeamSize::all();
         $countries = Country::all();
         $states = State::select('id', 'name', 'country_id')
-            ->where('country_id', $companyInfo->country)
+            ->where('country_id', $companyInfo?->country)
             ->get();
         $cities = City::select('id', 'name', 'state_id', 'country_id')
-            ->where('state_id', $companyInfo->state)
+            ->where('state_id', $companyInfo?->state)
             ->get();
         return view(
             'frontend.company-dashboard.profile.index',
@@ -66,6 +66,12 @@ class CompanyProfileController extends Controller
         $data['vision'] = $request->vision;
 
         Company::updateOrCreate(['user_id' => auth()->user()->id], $data);
+        if (isCompanyProfileComplete()) {
+            $company = Company::where('user_id', auth()->user()->id)->first();
+            $company->is_profile_verified = 1;
+            $company->visibility = 1;
+            $company->save();
+        }
         notify()->success('Company Info updated successfully');
         return redirect()->back();
     }
@@ -90,6 +96,12 @@ class CompanyProfileController extends Controller
                 'map_link' => $request->map_link,
             ]
         );
+        if (isCompanyProfileComplete()) {
+            $company = Company::where('user_id', auth()->user()->id)->first();
+            $company->is_profile_verified = 1;
+            $company->visibility = 1;
+            $company->save();
+        }
         notify()->success('Founding Info updated successfully');
         return redirect()->back();
     }

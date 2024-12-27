@@ -20,7 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'logo' => ['image', 'max:1500'],
             'banner' => ['image', 'max:1500'],
             'name' => ['required', 'string', 'max:100'],
-            'bio' => ['required'],
+            'bio' => ['required', 'string', 'max:500'],
             'vision' => ['required']
         ];
         $company = Company::where('user_id', auth()->user()->id)->first();

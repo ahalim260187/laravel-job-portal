@@ -12,7 +12,7 @@
                          name="industry_type">
                          <option value="">Select</option>
                          @foreach ($industryTypes as $industryType)
-                             <option @selected($industryType->id === $companyInfo->industry_type_id) value="{{ $industryType->id }}">
+                             <option @selected($industryType->id === $companyInfo?->industry_type_id) value="{{ $industryType->id }}">
                                  {{ $industryType->name }}</option>
                          @endforeach
                      </select>
@@ -28,7 +28,7 @@
                          name="organization_size">
                          <option value="">Select</option>
                          @foreach ($organizationTypes as $organizationType)
-                             <option @selected($organizationType->id === $companyInfo->organization_size_id) value="{{ $organizationType->id }}">
+                             <option @selected($organizationType->id === $companyInfo?->organization_size_id) value="{{ $organizationType->id }}">
                                  {{ $organizationType->name }}</option>
                          @endforeach
                          <option value="0">One</option>
@@ -44,7 +44,7 @@
                          name="team_size">
                          <option value="">Select</option>
                          @foreach ($teamSizes as $teamSize)
-                             <option @selected($teamSize->id === $companyInfo->team_size_id) value="{{ $teamSize->id }}">{{ $teamSize->name }}
+                             <option @selected($teamSize->id === $companyInfo?->team_size_id) value="{{ $teamSize->id }}">{{ $teamSize->name }}
                                  {{ $teamSize->name === 'Only Me' ? '' : ' Member' }}</option>
                          @endforeach
                      </select>
@@ -106,7 +106,7 @@
                          name="country">
                          <option value="">Select</option>
                          @foreach ($countries as $country)
-                             <option @selected($country->id === $companyInfo->country) value="{{ $country->id }}">{{ $country->name }}
+                             <option @selected($country->id === $companyInfo?->country) value="{{ $country->id }}">{{ $country->name }}
                              </option>
                          @endforeach
                      </select>
@@ -121,7 +121,7 @@
                          name="state">
                          <option value="">Select</option>
                          @foreach ($states as $state)
-                             <option @selected($state->id === $companyInfo->state) value="{{ $state->id }}">{{ $state->name }}
+                             <option @selected($state->id === $companyInfo?->state) value="{{ $state->id }}">{{ $state->name }}
                              </option>
                          @endforeach
                      </select>
@@ -136,7 +136,7 @@
                          name="city">
                          <option value="">Select</option>
                          @foreach ($cities as $city)
-                             <option @selected($city->id === $companyInfo->city) value="{{ $city->id }}">{{ $city->name }}
+                             <option @selected($city->id === $companyInfo?->city) value="{{ $city->id }}">{{ $city->name }}
                              </option>
                          @endforeach
                      </select>
