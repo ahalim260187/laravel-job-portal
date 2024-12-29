@@ -13,14 +13,24 @@
                         class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Starter</li>
-            <li class="dropdown {{ setSidebarActive(['admin.industry-type.*', 'admin.organization-type.*']) }}">
+            <li
+                class="dropdown {{ setSidebarActive(['admin.industry-type.*', 'admin.organization-type.*', 'admin.languages.*', 'admin.professions.*', 'admin.skills.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
-                    <span>Profile Info</span></a>
+                    <span>Attributes</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.industry-type.*']) }}"><a class="nav-link"
                             href="{{ route('admin.industry-type.index') }}">Industry Type</a></li>
                     <li class="{{ setSidebarActive(['admin.organization-type.*']) }}"><a class="nav-link"
                             href="{{ route('admin.organization-type.index') }}">Organization Type</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.languages.index') }}">Languages</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.professions.index') }}">ProfessionS</a>
+                    </li>
+                    <li class="{{ setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.skills.index') }}">Skills</a>
                     </li>
                 </ul>
             </li>

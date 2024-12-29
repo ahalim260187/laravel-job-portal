@@ -12,8 +12,11 @@ use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustriTypeController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\StateController;
 use App\Models\Country;
 use Illuminate\Support\Facades\Route;
@@ -110,6 +113,15 @@ Route::group(
 
         // City Route
         Route::resource('/cities', CityController::class);
+
+        // Languages Route
+        Route::resource('/languages', LanguageController::class);
+
+        // Profession Route
+        Route::resource('/professions', ProfessionController::class);
+
+        //Skills Route
+        Route::resource('/skills', SkillController::class);
 
         Route::get('get-states/{countryId}', [
             LocationController::class,
