@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontEnd\LocationController;
 use App\Http\Controllers\FrontEnd\CandidateDashboardController;
+use App\Http\Controllers\FrontEnd\CandidateProfileController;
 use App\Http\Controllers\FrontEnd\CompanyDashboardController;
 use App\Http\Controllers\FrontEnd\CompanyProfileController;
 use App\Http\Controllers\HomeController;
@@ -59,6 +60,16 @@ Route::group(
             CandidateDashboardController::class,
             'index',
         ])->name('dashboard');
+
+        Route::get('/profile', [
+            CandidateProfileController::class,
+            'index',
+        ])->name('profile');
+
+        Route::post('/profile/basic-info', [
+            CandidateProfileController::class,
+            'basicInfoUpdate',
+        ])->name('profile.basic-info');
     }
 );
 
