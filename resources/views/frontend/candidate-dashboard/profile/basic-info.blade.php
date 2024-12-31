@@ -7,15 +7,14 @@
                  <div class="form-group">
                      {{-- <x-image-preview :source="$companyInfo?->logo" :height="250" :width="250" imgName="Logo" /> --}}
                      <label class="font-sm color-text-mutted mb-10">Profile Picture *</label>
-                     <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" type="file"
-                         name="logo">
-                     <x-input-error :messages="$errors->get('logo')" class="mt-2" />
+                     <input class="form-control {{ hasError($errors, 'profile_picture') }}" type="file"
+                         name="profile_picture">
+                     <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
                  </div>
                  <div class="form-group">
                      {{-- <x-image-preview :source="$companyInfo?->logo" :height="250" :width="250" imgName="Logo" /> --}}
                      <label class="font-sm color-text-mutted mb-10">CV</label>
-                     <input class="form-control {{ $errors->has('cv') ? 'is-invalid' : '' }}" type="file"
-                         name="cv">
+                     <input class="form-control {{ hasError($errors, 'cv') }}" type="file" name="cv">
                      <x-input-error :messages="$errors->get('cv')" class="mt-2" />
                  </div>
              </div>
@@ -24,17 +23,15 @@
                      <div class="col-md-6">
                          <div class="form-group">
                              <label class="font-sm color-text-mutted mb-10">Full Name *</label>
-                             <input class="form-control {{ $errors->has('full_name') ? 'is-invalid' : '' }}"
-                                 type="text" name="full_name" value="{{ old('full_name') }}">
+                             <input class="form-control {{ hasError($errors, 'full_name') }}" type="text"
+                                 name="full_name" value="{{ old('full_name') }}">
                              <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
                          </div>
                      </div>
                      <div class="col-md-6">
                          <div class="form-group">
-                             <label class="font-sm color-text-mutted mb-10">Title/Tagline *</label>
-                             <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text"
-                                 name="title" value="{{ old('title') }}">
-                             <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                             <label class="font-sm color-text-mutted mb-10">Title/Tagline</label>
+                             <input class="form-control " type="text" name="title" value="{{ old('title') }}">
                          </div>
                      </div>
                  </div>
@@ -42,27 +39,37 @@
                      <div class="col-md-12">
                          <div class="form-group">
                              <label class="font-sm color-text-mutted mb-10">Experience Level *</label>
-                             <input class="form-control {{ $errors->has('level') ? 'is-invalid' : '' }}" type="text"
-                                 name="level" value="{{ old('level') }}">
-                             <x-input-error :messages="$errors->get('level')" class="mt-2" />
+                             <select name="experience_level"
+                                 class="form-control {{ hasError($errors, 'experience_level') }}">
+                                 <option value="">Select</option>
+                                 <option value="1">1 Year</option>
+                                 <option value="2">2 Year</option>
+                                 <option value="3">3 Year</option>
+                             </select>
+                             <x-input-error :messages="$errors->get('experience_level')" class="mt-2" />
                          </div>
                      </div>
                  </div>
                  <div class="row">
                      <div class="col-md-6">
                          <div class="form-group">
-                             <label class="font-sm color-text-mutted mb-10">Website *</label>
-                             <input class="form-control {{ $errors->has('website') ? 'is-invalid' : '' }}"
-                                 type="text" name="website" value="{{ old('level') }}">
+                             <label class="font-sm color-text-mutted mb-10">Website</label>
+                             <input class="form-control {{ hasError($errors, 'website') }}" type="text"
+                                 name="website" value="{{ old('website') }}">
                              <x-input-error :messages="$errors->get('website')" class="mt-2" />
                          </div>
                      </div>
                      <div class="col-md-6">
                          <div class="form-group">
                              <label class="font-sm color-text-mutted mb-10">Date Of Birth *</label>
-                             <input class="form-control {{ $errors->has('birth') ? 'is-invalid' : '' }}" type="date"
-                                 name="birth" value="{{ old('birth') }}">
-                             <x-input-error :messages="$errors->get('birth')" class="mt-2" />
+                             <div class="input-group date" id="datepicker">
+                                 <input class="form-control {{ hasError($errors, 'date_of_birth') }} px-5"
+                                     type="text" name="date_of_birth" value="{{ old('date_of_birth') }}">
+                                 <span class="input-group-append">
+                                     <i class="fa fa-calendar"></i>
+                                 </span>
+                                 <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
+                             </div>
                          </div>
                      </div>
                  </div>
