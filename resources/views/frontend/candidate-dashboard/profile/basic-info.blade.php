@@ -75,6 +75,7 @@
                                  <x-input-error :messages="$errors->get('date_of_birth')" class="mt-2" />
                              </div>
                          </div>
+                         <x-notify::notify />
                      </div>
                  </div>
              </div>
