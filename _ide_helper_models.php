@@ -73,6 +73,7 @@ namespace App\Models{
  * @property int $visibility
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate query()
@@ -101,6 +102,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class Candidate extends \Eloquent {}
 }
@@ -151,9 +153,9 @@ namespace App\Models{
  * @property string|null $vision
  * @property int $total_views
  * @property string|null $address
- * @property string|null $city
- * @property string|null $state
- * @property string|null $country
+ * @property int|null $city
+ * @property int|null $state
+ * @property int|null $country
  * @property string|null $map_link
  * @property int $is_profile_verified
  * @property int $document_verified_at
@@ -357,7 +359,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
- * @property string|null $slug
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newModelQuery()

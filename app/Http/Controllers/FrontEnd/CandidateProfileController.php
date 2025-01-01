@@ -15,17 +15,26 @@ class CandidateProfileController extends Controller
     use FileUploudTrait;
     public function index(): View
     {
-        return view('frontend.candidate-dashboard.profile.index');
+        $candidate = Candidate::where('user_id', auth()->user()->id)->first();
+        return view(
+            'frontend.candidate-dashboard.profile.index',
+            compact('candidate')
+        );
     }
 
-    public function basicInfoUpdate(CandidateBasicInfoUpdateRequest $request): RedirectResponse
-    {
+    public function basicInfoUpdate(
+        CandidateBasicInfoUpdateRequest $request
+    ): RedirectResponse {
         $imagePath = $this->uploudFile($request, 'profile_picture');
         $cvPath = $this->uploudFile($request, 'cv');
 
         $data = [];
-        if (!empty($imagePath)) $data['image'] = $imagePath;
-        if (!empty($cvPath)) $data['cv'] = $cvPath;
+        if (!empty($imagePath)) {
+            $data['image'] = $imagePath;
+        }
+        if (!empty($cvPath)) {
+            $data['cv'] = $cvPath;
+        }
         $data['full_name'] = $request->full_name;
         $data['title'] = $request->title;
         $data['experience_id'] = $request->experience_level;
