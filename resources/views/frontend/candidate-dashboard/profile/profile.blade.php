@@ -1,48 +1,85 @@
- {{-- Basic --}}
- <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-     <form action="{{ route('company.profile.company-info') }}" method="POST" enctype="multipart/form-data">
+ {{-- Candidate Profile Info --}}
+ <div class="tab-pane fade " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+     <form action="{{ route('candidate.profile.basic-info') }}" method="POST">
          @csrf
          <div class="row">
              <div class="col-md-6">
                  <div class="form-group">
-                     <x-image-preview :source="$companyInfo?->logo" :height="250" :width="250" imgName="Logo" />
-                     <label class="font-sm color-text-mutted mb-10">Logo *</label>
-                     <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" type="file"
-                         name="logo">
-                     <x-input-error :messages="$errors->get('logo')" class="mt-2" />
+                     <label class="font-sm color-text-mutted mb-10">Gender *</label>
+                     <select name="gender" class="form-control {{ hasError($errors, 'gender') }}">
+                         <option value="">Select</option>
+                         <option value="male">Male</option>
+                         <option value="female">Female</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                  </div>
              </div>
              <div class="col-md-6">
                  <div class="form-group">
-                     <x-image-preview :source="$companyInfo?->banner" :height="250" :width="500" imgName="Banner" />
-                     <label class="font-sm color-text-mutted mb-10">Banner *</label>
-                     <input class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}" type="file"
-                         name="banner">
-                     <x-input-error :messages="$errors->get('banner')" class="mt-2" />
+                     <label class="font-sm color-text-mutted mb-10">Marital Status *</label>
+                     <select name="marital_status" class="form-control {{ hasError($errors, 'marital_status') }}">
+                         <option value="">Select</option>
+                         <option value="married">Married</option>
+                         <option value="single">Single</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('marital_status')" class="mt-2" />
                  </div>
              </div>
-         </div>
-         <div class="col-md-12">
-             <div class="form-group">
-                 <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"
-                     name="name" value="{{ old('name', $companyInfo?->name) }}">
-                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <label class="font-sm color-text-mutted mb-10">Profession *</label>
+                     <select name="profession" class="form-control {{ hasError($errors, 'profession') }}">
+                         <option value="">Select</option>
+                         <option value="1">Tes 1</option>
+                         <option value="2">tes2</option>
+                         <option value="3">Tes 3</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('profession')" class="mt-2" />
+                 </div>
              </div>
-         </div>
-         <div class="col-md-12">
-             <div class="form-group">
-                 <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
-                 <textarea class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" style="height:150px" name="bio">{{ old('bio', $companyInfo?->bio) }}</textarea>
-                 <x-input-error :messages="$errors->get('bio')" class="mt-2" />
+             <div class="col-md-6">
+                 <div class="form-group">
+                     <label class="font-sm color-text-mutted mb-10">Your Availability *</label>
+                     <select name="availability" class="form-control {{ hasError($errors, 'availability') }}">
+                         <option value="">Select</option>
+                         <option value="available">Available</option>
+                         <option value="not_available">Not Available</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('availability')" class="mt-2" />
+                 </div>
              </div>
-         </div>
-         <div class="col-md-12">
-             <div class="form-group">
-                 <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
-                 <textarea class="form-control {{ $errors->has('vision') ? 'is-invalid' : '' }}" style="height:150px" name="vision">{{ old('vision', $companyInfo?->vision) }}</textarea> <x-input-error :messages="$errors->get('vision')" class="mt-2" />
+             <div class="col-md-12">
+                 <div class="form-group">
+                     <label class="font-sm color-text-mutted mb-10">Skill You Have *</label>
+                     <select name="skills" class="form-control {{ hasError($errors, 'skills') }} select2"
+                         multiple="">
+                         <option value="">Select</option>
+                         <option value="1">PHP</option>
+                         <option value="2">Laravel</option>
+                         <option value="2">React</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('skills')" class="mt-2" />
+                 </div>
              </div>
-             <x-notify::notify />
+             <div class="col-md-12">
+                 <div class="form-group">
+                     <label class="font-sm color-text-mutted mb-10">Language You Know *</label>
+                     <select name="language" class="form-control {{ hasError($errors, 'language') }}">
+                         <option value="">Select</option>
+                         <option value="1">English</option>
+                         <option value="2">Indonesia</option>
+                     </select>
+                     <x-input-error :messages="$errors->get('language')" class="mt-2" />
+                 </div>
+             </div>
+             <div class="col-md-12">
+                 <div class="form-group">
+                     <label class="font-sm color-text-mutted mb-10">Biography *</label>
+                     <textarea name="bio"cols="30" rows="10" class="form-control {{ hasError($errors, 'bio') }}"></textarea>
+                     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
+                 </div>
+                 <x-notify::notify />
+             </div>
          </div>
          <div class="box-button mt-15">
              <button type="submit" class="btn btn-apply-big font-md font-bold">Save All
@@ -50,4 +87,4 @@
          </div>
      </form>
  </div>
- {{-- Company Info --}}
+ {{-- Candidate Basic Info --}}

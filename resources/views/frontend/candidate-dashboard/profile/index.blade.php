@@ -49,8 +49,8 @@
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 @include('frontend.candidate-dashboard.profile.basic-info')
-                                {{-- @include('frontend.candidate-dashboard.profile.profile')
-                                @include('frontend.candidate-dashboard.profile.experience-education.blade')
+                                @include('frontend.candidate-dashboard.profile.profile')
+                                {{-- @include('frontend.candidate-dashboard.profile.experience-education.blade')
                                 @include('frontend.candidate-dashboard.profile.account-setting') --}}
                             </div>
                         </div>
