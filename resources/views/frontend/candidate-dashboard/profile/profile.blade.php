@@ -80,8 +80,8 @@
              </div>
              <div class="col-md-12">
                  <div class="form-group">
-                     <label class="font-sm color-text-mutted mb-10">Biography *</label>
-                     <textarea name="bio"cols="30" rows="10" class="form-control {{ hasError($errors, 'bio') }}"></textarea>
+                     <label for="content" class="font-sm color-text-mutted mb-10">Biography *</label>
+                     <textarea name="bio" id="content" class="form-control {{ hasError($errors, 'bio') }}"></textarea>
                      <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                  </div>
                  <x-notify::notify />
