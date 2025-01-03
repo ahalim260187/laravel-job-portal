@@ -71,8 +71,9 @@
     <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+    {{-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> --}}
     {{-- <script src="https://cdn.ckeditor.com/4.25.0-lts/standard/ckeditor.js"></script> --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     @notifyJs
     <script type="text/javascript">
         $(function() {
@@ -80,7 +81,9 @@
                 format: 'yyyy-mm-dd'
             });
         });
-        CKEDITOR.replace('content');
+        ClassicEditor.create(document.querySelector('#content')).catch(error => {
+            console.log(error);
+        });
     </script>
     @stack('scripts')
 </body>
