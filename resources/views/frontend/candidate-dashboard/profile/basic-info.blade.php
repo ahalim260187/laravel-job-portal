@@ -40,10 +40,10 @@
                  </div>
                  <div class="row">
                      <div class="col-md-12">
-                         <div class="form-group">
+                         <div class="form-group select-style">
                              <label class="font-sm color-text-mutted mb-10">Experience Level *</label>
                              <select name="experience_level"
-                                 class="form-control {{ hasError($errors, 'experience_level') }}">
+                                 class="form-control form-icons select-active {{ hasError($errors, 'experience_level') }}">
                                  <option value="">Select</option>
                                  <option @selected($candidate?->experience_id == 1) value="1">1 Year</option>
                                  <option @selected($candidate?->experience_id == 2) value="2">2 Year</option>

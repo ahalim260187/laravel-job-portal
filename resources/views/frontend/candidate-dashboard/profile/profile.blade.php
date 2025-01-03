@@ -4,9 +4,10 @@
          @csrf
          <div class="row">
              <div class="col-md-6">
-                 <div class="form-group">
+                 <div class="form-group select-style ">
                      <label class="font-sm color-text-mutted mb-10">Gender *</label>
-                     <select name="gender" class="form-control {{ hasError($errors, 'gender') }}">
+                     <select name="gender"
+                         class=" form-control form-icons select-active select2 {{ hasError($errors, 'gender') }}">
                          <option value="">Select</option>
                          <option value="male">Male</option>
                          <option value="female">Female</option>
@@ -15,9 +16,10 @@
                  </div>
              </div>
              <div class="col-md-6">
-                 <div class="form-group">
+                 <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Marital Status *</label>
-                     <select name="marital_status" class="form-control {{ hasError($errors, 'marital_status') }}">
+                     <select name="marital_status"
+                         class="form-control form-icons select-active  {{ hasError($errors, 'marital_status') }}">
                          <option value="">Select</option>
                          <option value="married">Married</option>
                          <option value="single">Single</option>
@@ -26,9 +28,10 @@
                  </div>
              </div>
              <div class="col-md-6">
-                 <div class="form-group">
+                 <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Profession *</label>
-                     <select name="profession" class="form-control {{ hasError($errors, 'profession') }}">
+                     <select name="profession"
+                         class="form-control form-icons select-active  {{ hasError($errors, 'profession') }}">
                          <option value="">Select</option>
                          <option value="1">Tes 1</option>
                          <option value="2">tes2</option>
@@ -38,9 +41,10 @@
                  </div>
              </div>
              <div class="col-md-6">
-                 <div class="form-group">
+                 <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Your Availability *</label>
-                     <select name="availability" class="form-control {{ hasError($errors, 'availability') }}">
+                     <select name="availability"
+                         class="form-control form-icons select-active  {{ hasError($errors, 'availability') }}">
                          <option value="">Select</option>
                          <option value="available">Available</option>
                          <option value="not_available">Not Available</option>
@@ -49,9 +53,10 @@
                  </div>
              </div>
              <div class="col-md-12">
-                 <div class="form-group">
+                 <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Skill You Have *</label>
-                     <select name="skills" class="form-control {{ hasError($errors, 'skills') }} select2"
+                     <select name="skills"
+                         class="form-control form-icons select-active  {{ hasError($errors, 'skills') }}"
                          multiple="">
                          <option value="">Select</option>
                          <option value="1">PHP</option>
@@ -62,9 +67,10 @@
                  </div>
              </div>
              <div class="col-md-12">
-                 <div class="form-group">
+                 <div class="form-group select-style">
                      <label class="font-sm color-text-mutted mb-10">Language You Know *</label>
-                     <select name="language" class="form-control {{ hasError($errors, 'language') }}">
+                     <select name="language"
+                         class="form-control form-icons select-active {{ hasError($errors, 'language') }}">
                          <option value="">Select</option>
                          <option value="1">English</option>
                          <option value="2">Indonesia</option>

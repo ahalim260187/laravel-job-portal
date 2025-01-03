@@ -63,7 +63,6 @@
     <script src="{{ asset('frontend/assets/js/plugins/magnific-popup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/select2.min.js') }}"></script>
-    <script src="assets/modules/select2/dist/js/select2.full.min.js"></script>
     <script src="{{ asset('frontend/assets/js/plugins/isotope.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/scrollup.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js') }}"></script>
