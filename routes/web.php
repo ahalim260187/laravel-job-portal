@@ -70,6 +70,11 @@ Route::group(
             CandidateProfileController::class,
             'basicInfoUpdate',
         ])->name('profile.basic-info');
+
+        Route::post('/profile/profile-info', [
+            CandidateProfileController::class,
+            'profileInfoUpdate',
+        ])->name('profile.profile-info');
     }
 );
 

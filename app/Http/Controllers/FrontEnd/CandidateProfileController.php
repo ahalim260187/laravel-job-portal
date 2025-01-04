@@ -4,21 +4,34 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FrontEnd\CandidateBasicInfoUpdateRequest;
+use App\Http\Requests\FrontEnd\CandidateProfileUpdateRequest;
 use App\Models\Candidate;
+use App\Models\CandidateLanguage;
+use App\Models\CandidateSkill;
+use App\Models\Language;
+use App\Models\Profession;
+use App\Models\Skill;
 use App\Services\Notify;
 use App\Traits\FileUploudTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class CandidateProfileController extends Controller
 {
     use FileUploudTrait;
+
     public function index(): View
     {
-        $candidate = Candidate::where('user_id', auth()->user()->id)->first();
+        $candidate = Candidate::with(['skills', 'languages'])
+            ->where('user_id', auth()->user()->id)
+            ->first();
+        $professions = Profession::all();
+        $skills = Skill::all();
+        $languages = Language::all();
         return view(
             'frontend.candidate-dashboard.profile.index',
-            compact('candidate')
+            compact('candidate', 'professions', 'skills', 'languages')
         );
     }
 
@@ -42,6 +55,41 @@ class CandidateProfileController extends Controller
         $data['birth_date'] = $request->date_of_birth;
 
         Candidate::updateOrCreate(['user_id' => auth()->user()->id], $data);
+        Notify::updateNotify();
+        return redirect()->back();
+    }
+
+    public function profileInfoUpdate(
+        CandidateProfileUpdateRequest $request
+    ): RedirectResponse {
+        Candidate::updateOrCreate(
+            ['user_id' => auth()->user()->id],
+            [
+                'gender' => $request->gender,
+                'marital_status' => $request->marital_status,
+                'profession_id' => $request->profession,
+                'status' => $request->availability,
+                'bio' => $request->bio,
+            ]
+        );
+        $candidate = Candidate::where('user_id', auth()->user()->id)->first();
+
+        CandidateSkill::where('candidate_id', $candidate->id)->delete();
+        foreach ($request->skills as $skill) {
+            $skills = new CandidateSkill();
+            $skills->candidate_id = $candidate->id;
+            $skills->skill_id = $skill;
+            $skills->save();
+        }
+
+        CandidateLanguage::where('candidate_id', $candidate->id)->delete();
+        foreach ($request->language as $language) {
+            $languages = new CandidateLanguage();
+            $languages->candidate_id = $candidate->id;
+            $languages->language_id = $language;
+            $languages->save();
+        }
+
         Notify::updateNotify();
         return redirect()->back();
     }
