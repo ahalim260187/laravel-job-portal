@@ -9986,3 +9986,7 @@ footer .color-text-paragraph {
     color: black !important;
     margin-right: 7px !important;
 }
+
+.ck-editor__editable {
+    min-height: 300px; /* Sesuaikan tinggi sesuai kebutuhan */
+}
